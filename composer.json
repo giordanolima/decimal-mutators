@@ -1,0 +1,22 @@
+{
+    "name": "giordanolima/decimal-mutators",
+    "description": "Add a short way to create accessors and mutators for decimal fields",
+    "keywords": ["laravel", "mutators", "mutator", "accessors", "accessor", "decimal", "decimals", "eloquent", "laravel5"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Giordano de Andrades Lima",
+            "email": "giordanol@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "5.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "GiordanoLima\\DecimalMutators": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
