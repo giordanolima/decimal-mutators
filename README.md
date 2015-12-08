@@ -1,4 +1,4 @@
-[![Latest Stable Version](https://packagist.org/packages/giordanolima/decimal-mutators/version)](https://packagist.org/packages/giordanolima/decimal-mutators) [![Total Downloads](https://packagist.org/packages/giordanolima/decimal-mutators/downloads)](https://packagist.org/packages/giordanolima/decimal-mutators) [![License](https://packagist.org/packages/giordanolima/decimal-mutators/license)](https://packagist.org/packages/giordanolima/decimal-mutators)
+[![Latest Stable Version](https://poser.pugx.org/giordanolima/decimal-mutators/v/stable)](https://packagist.org/packages/giordanolima/decimal-mutators) [![Total Downloads](https://poser.pugx.org/giordanolima/decimal-mutators/downloads)](https://packagist.org/packages/giordanolima/decimal-mutators) [![License](https://poser.pugx.org/giordanolima/decimal-mutators/license)](https://packagist.org/packages/giordanolima/decimal-mutators)
 ## Decimal Mutators
 
 **Decimal Mutators** provides a short way to create accessors and mutators for decimal fields.
