@@ -13,7 +13,11 @@ trait DecimalMutators
         "getThounsandFrom" => ",",
         "getThounsandTo" => "",
     ];
-    
+    /**
+     * Overriding the parent's method to apply the logic
+     * @param string $key Field to test
+     * @return returns the value retuned by parent method
+     */
     public function hasGetMutator($key)
     {
         if (property_exists($this, "decimalsFields")) {
@@ -23,7 +27,12 @@ trait DecimalMutators
         }
         return parent::hasGetMutator($key);
     }
-    
+    /**
+     * Overriding the parent's method to apply the logic
+     * @param string $key Field to mutate
+     * @param string $value Value to mutate
+     * @return returns the value retuned by parent method
+     */
     protected function mutateAttribute($key, $value)
     {
         if (in_array($key, $this->decimalsFields)) {
@@ -32,6 +41,11 @@ trait DecimalMutators
             return parent::mutateAttribute($key, $value);
         }
     }
+    /**
+     * Overriding the parent's method to apply the logic
+     * @param string $key Field to test
+     * @return returns the value retuned by parent method
+     */
     public function hasSetMutator($key)
     {
         if (property_exists($this, "decimalsFields")) {
@@ -41,7 +55,12 @@ trait DecimalMutators
         }
         return parent::hasSetMutator($key);
     }
-    
+    /**
+     * Overriding the parent's method to apply the logic
+     * @param string $key Field to mutate
+     * @param string $value Value to mutate
+     * @return returns the value retuned by parent method
+     */
     public function setAttribute($key, $value)
     {       
         if (in_array($key, $this->decimalsFields)) {
@@ -50,7 +69,11 @@ trait DecimalMutators
         return parent::setAttribute($key, $value);
         
     }
-    
+    /**
+     * Transform the value
+     * @param string $value Value to transform
+     * @return string the value formatted
+     */
     private function getDecimal($value)
     {
         $decFrom = $this->decimalsOptionsDefault["getDecimalsFrom"];
@@ -69,7 +92,12 @@ trait DecimalMutators
         }
         return str_replace($decFrom, $decTo, str_replace($thouFrom, $thouTo, $value));
     }
-    
+    /**
+     * Transform the value 
+     * @param string $key The field that will receive the formatted value
+     * @param string $value The value to transform
+     * @return The object $this
+     */
     private function setDecimal($key,$value)
     {
         $decFrom = $this->decimalsOptionsDefault["setDecimalsFrom"];
