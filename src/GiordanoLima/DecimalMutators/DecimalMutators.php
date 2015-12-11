@@ -76,9 +76,10 @@ trait DecimalMutators
      */
     private function getDecimal($value)
     {
+
         $decFrom = $this->decimalsOptionsDefault["getDecimalsFrom"];
-        $decTo = $this->decimalsOptionsDefault["getDecimalsTo"];
         $thouFrom = $this->decimalsOptionsDefault["getThounsandFrom"];
+        $decTo = $this->decimalsOptionsDefault["getDecimalsTo"];
         $thouTo = $this->decimalsOptionsDefault["getThounsandTo"];
         if (property_exists($this, "decimalsOptions") && is_array($this->decimalsOptions)) {
             if(array_key_exists("getDecimalsFrom", $this->decimalsOptions))
@@ -90,7 +91,14 @@ trait DecimalMutators
             if(array_key_exists("getThounsandTo", $this->decimalsOptions))
                 $thouTo = $this->decimalsOptions["getThounsandTo"];
         }
-        return str_replace($decFrom, $decTo, str_replace($thouFrom, $thouTo, $value));
+
+        $parts = explode($decFrom,$value);
+        $decimals = strlen(end($parts));
+        $temp = str_replace($decFrom, "+++|||", str_replace($thouFrom, "|||+++", $value));
+        $temp = str_replace(["|||+++","+++|||"],[',','.'],$temp);
+        return number_format($temp,$decimals,$decTo,$thouTo);
+
+
     }
     /**
      * Transform the value 
@@ -114,7 +122,12 @@ trait DecimalMutators
             if(array_key_exists("setThounsandTo", $this->decimalsOptions))
                 $thouTo = $this->decimalsOptions["setThounsandTo"];
         }
-        $this->attributes[$key] = str_replace($decFrom, $decTo, str_replace($thouFrom, $thouTo, $value));
+
+        $parts = explode($decFrom,$value);
+        $decimals = strlen(end($parts));
+        $temp = str_replace($decFrom, "+++|||", str_replace($thouFrom, "|||+++", $value));
+        $temp = str_replace(["|||+++","+++|||"],[',','.'],$temp);
+        $this->attributes[$key] = number_format($temp,$decimals,$decTo,$thouTo);
         return $this;
     }
 }
