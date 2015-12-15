@@ -118,7 +118,7 @@ trait DecimalMutators
         $temp = str_replace($decFrom, '+++|||', str_replace($thouFrom, '|||+++', $value));
         $temp = str_replace(['|||+++', '+++|||'], [',', '.'], $temp);
 
-        return number_format($temp, $decimals, $decTo, $thouTo);
+        return number_format((float) $temp, $decimals, $decTo, $thouTo);
     }
 
     /**
