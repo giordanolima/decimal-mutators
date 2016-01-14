@@ -116,7 +116,7 @@ trait DecimalMutators
         $parts = explode($decFrom, $value);
         $decimals = strlen(end($parts));
         $temp = str_replace($decFrom, '+++|||', str_replace($thouFrom, '|||+++', $value));
-        $temp = str_replace(['|||+++', '+++|||'], [',', '.'], $temp);
+        $temp = str_replace(['|||+++', '+++|||'], ['', '.'], $temp);
 
         return number_format((float) $temp, $decimals, $decTo, $thouTo);
     }
@@ -153,7 +153,7 @@ trait DecimalMutators
         $parts = explode($decFrom, $value);
         $decimals = strlen(end($parts));
         $temp = str_replace($decFrom, '+++|||', str_replace($thouFrom, '|||+++', $value));
-        $temp = str_replace(['|||+++', '+++|||'], [',', '.'], $temp);
+        $temp = str_replace(['|||+++', '+++|||'], ['', '.'], $temp);
         $this->attributes[$key] = number_format((float) $temp, $decimals, $decTo, $thouTo);
 
         return $this;
