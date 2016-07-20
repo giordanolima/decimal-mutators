@@ -56,3 +56,18 @@ protected $decimalsOptions = [
 ];
 ```
 
+You can disable the mutators:
+```php
+MyModel::$disableGetMutator = true;
+echo $myModel->decimal_field_1; // Will print 200.00
+MyModel::$disableGetMutator = false;
+echo $myModel->decimal_field_1; // Will print 200,00
+```
+```php
+MyModel::$disableSetMutator = true;
+$myModel->decimal_field_1 = '200,00';
+$myModel->save(); // It will store as 200,00
+MyModel::$disableSetMutator = false;
+$myModel->decimal_field_1 = '200,00';
+$myModel->save(); // It will store as 200.00
+```
