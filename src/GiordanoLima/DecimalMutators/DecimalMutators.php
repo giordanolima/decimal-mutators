@@ -14,6 +14,8 @@ trait DecimalMutators
         'getThounsandFrom' => ',',
         'getThounsandTo'   => '',
     ];
+    static $disableGetMutator = false;
+    static $disableSetMutator = false;
 
     /**
      * Overriding the parent's method to apply the logic.
@@ -25,7 +27,7 @@ trait DecimalMutators
     public function hasGetMutator($key)
     {
         if (property_exists($this, 'decimalsFields')) {
-            if (is_array($this->decimalsFields) && in_array($key, $this->decimalsFields)) {
+            if (is_array($this->decimalsFields) && in_array($key, $this->decimalsFields) && !self::$disableGetMutator) {
                 return true;
             }
         }
@@ -60,7 +62,7 @@ trait DecimalMutators
     public function hasSetMutator($key)
     {
         if (property_exists($this, 'decimalsFields')) {
-            if (is_array($this->decimalsFields) && in_array($key, $this->decimalsFields)) {
+            if (is_array($this->decimalsFields) && in_array($key, $this->decimalsFields) && !self::$disableSetMutator) {
                 return true;
             }
         }
