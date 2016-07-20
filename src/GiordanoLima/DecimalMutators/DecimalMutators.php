@@ -14,8 +14,8 @@ trait DecimalMutators
         'getThounsandFrom' => ',',
         'getThounsandTo'   => '',
     ];
-    static $disableGetMutator = false;
-    static $disableSetMutator = false;
+    public static $disableGetMutator = false;
+    public static $disableSetMutator = false;
 
     /**
      * Overriding the parent's method to apply the logic.
