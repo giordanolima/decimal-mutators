@@ -45,7 +45,7 @@ echo $myModel->decimal_field_1; // Will print 200,00
 By default, it gonna be used 2 for decimal points... If you need change it, you can set the option:
 ```php
 protected $decimalsOptions = [
-    "decimal" => 4, // now, the fields will be stored and printed with 4 decimals point
+    "decimals" => 4, // now, the fields will be stored and printed with 4 decimals point
 ];
 ```
 
