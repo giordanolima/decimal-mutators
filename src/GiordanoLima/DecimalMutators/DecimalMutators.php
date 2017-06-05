@@ -13,6 +13,7 @@ trait DecimalMutators
         'getDecimalsTo'    => ',',
         'getThounsandFrom' => ',',
         'getThounsandTo'   => '',
+        'decimals'   => 2,
     ];
     public static $disableGetMutator = false;
     public static $disableSetMutator = false;
@@ -100,6 +101,7 @@ trait DecimalMutators
         $thouFrom = $this->decimalsOptionsDefault['getThounsandFrom'];
         $decTo = $this->decimalsOptionsDefault['getDecimalsTo'];
         $thouTo = $this->decimalsOptionsDefault['getThounsandTo'];
+        $decimals = $this->decimalsOptionsDefault['decimals'];
         if (property_exists($this, 'decimalsOptions') && is_array($this->decimalsOptions)) {
             if (array_key_exists('getDecimalsFrom', $this->decimalsOptions)) {
                 $decFrom = $this->decimalsOptions['getDecimalsFrom'];
@@ -113,10 +115,12 @@ trait DecimalMutators
             if (array_key_exists('getThounsandTo', $this->decimalsOptions)) {
                 $thouTo = $this->decimalsOptions['getThounsandTo'];
             }
+            if (array_key_exists('decimals', $this->decimalsOptions)) {
+                $decimals = $this->decimalsOptions['decimals'];
+            }
         }
 
         $parts = explode($decFrom, $value);
-        $decimals = strlen(end($parts));
         $temp = str_replace($decFrom, '+++|||', str_replace($thouFrom, '|||+++', $value));
         $temp = str_replace(['|||+++', '+++|||'], ['', '.'], $temp);
 
@@ -137,6 +141,7 @@ trait DecimalMutators
         $decTo = $this->decimalsOptionsDefault['setDecimalsTo'];
         $thouFrom = $this->decimalsOptionsDefault['setThounsandFrom'];
         $thouTo = $this->decimalsOptionsDefault['setThounsandTo'];
+        $decimals = $this->decimalsOptionsDefault['decimals'];
         if (property_exists($this, 'decimalsOptions') && is_array($this->decimalsOptions)) {
             if (array_key_exists('setDecimalsFrom', $this->decimalsOptions)) {
                 $decFrom = $this->decimalsOptions['setDecimalsFrom'];
@@ -150,10 +155,12 @@ trait DecimalMutators
             if (array_key_exists('setThounsandTo', $this->decimalsOptions)) {
                 $thouTo = $this->decimalsOptions['setThounsandTo'];
             }
+            if (array_key_exists('decimals', $this->decimalsOptions)) {
+                $decimals = $this->decimalsOptions['decimals'];
+            }
         }
 
         $parts = explode($decFrom, $value);
-        $decimals = strlen(end($parts));
         $temp = str_replace($decFrom, '+++|||', str_replace($thouFrom, '|||+++', $value));
         $temp = str_replace(['|||+++', '+++|||'], ['', '.'], $temp);
         $this->attributes[$key] = number_format((float) $temp, $decimals, $decTo, $thouTo);
