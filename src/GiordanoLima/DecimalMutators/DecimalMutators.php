@@ -46,7 +46,7 @@ trait DecimalMutators
      */
     protected function mutateAttribute($key, $value)
     {
-        if (in_array($key, $this->decimalsFields)) {
+        if (in_array($key, $this->decimalsFields) && !self::$disableGetMutator) {
             return $this->getDecimal($value);
         } else {
             return parent::mutateAttribute($key, $value);
@@ -81,7 +81,7 @@ trait DecimalMutators
      */
     public function setAttribute($key, $value)
     {
-        if (in_array($key, $this->decimalsFields)) {
+        if (in_array($key, $this->decimalsFields) && !self::$disableSetMutator) {
             return $this->setDecimal($key, $value);
         }
 
